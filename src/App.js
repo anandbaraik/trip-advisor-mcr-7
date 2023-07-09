@@ -12,20 +12,20 @@ import {
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { Logo } from './Logo';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
-
-const router = createBrowserRouter([
-
-  {
-    path:'/',element:<Home/>
-  },
- 
-
-]);
+import {Countries} from "./pages/Countries";
+import Destinations from "./pages/Destinations";
+import DestinationDetails from "./pages/DestinationDetails";
 function App() {
   return (
     <ChakraProvider theme={theme}>
-      <RouterProvider router={router}/>
+      <Routes>
+          <Route path="/" element={<Home/>}/>
+          <Route path="/continents/:continentId/countries" element={<Countries/>}/>
+          <Route path="/continents/:continentId/countries/:countryId/destinations" element={<Destinations/>}/>
+          <Route path="/continents/:continentId/countries/:countryId/destination/:destinationId:details" element={<DestinationDetails/>}/>
+      </Routes>
     </ChakraProvider>
   );
 }
